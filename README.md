@@ -45,7 +45,7 @@ int main() {
             // compute FFT
             FFT(samples_array);
 
-            // retrive the first harmonic
+            // find the first harmonic
             int H1_index = 0;
 
             for(int i = 1; i < samples_nb/2; ++i) {
@@ -54,7 +54,8 @@ int main() {
                     H1_index = i;
                 }
             }
-
+            
+            // calculate frequency and amplitude
             float H1_freq = (float)H1_index * (float)sampling_freq / (float)samples_nb;
             float H1_ampl = std::abs(20*std::log10(samples_array[H1_index].real()) - 50);
             
