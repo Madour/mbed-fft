@@ -66,7 +66,9 @@ int main() {
             // re enable interrupt
             ticker.attach(&readSample, 1.0/sampling_freq);
         }
-        pc.printf("\r"); // hacky line, to prevent compiler optimization to remove if condition body
+        // magic line, program does not work without it
+        // (I suspect it prevents compiler optimization to remove while body because it thinks the if condition will never be true)
+        pc.printf("\r");
     }
 }
 
